@@ -1,4 +1,4 @@
-// Nintendo Switch 2 ("Ounce") platform support for Jolt Physics.
+// "Ounce" (codename) platform support for Jolt Physics.
 //@ BASTIEN ADD
 #pragma once
 
@@ -9,7 +9,7 @@
 // intentionally NOT defined here: leaving them undefined makes
 // TickCounter.h / Mutex.h / Semaphore.h fall back to their portable
 // generic-ARM / std::mutex / std::condition_variable implementations,
-// which are correct (if not maximally fast) on Switch2. Define these
+// which are correct (if not maximally fast) on Ounce. Define these
 // later using NN SDK primitives (nn::os::Mutex / ReaderWriterLock /
 // Semaphore, and the NN SDK tick-counter API) as a follow-up perf pass.
 //@ BASTIEN END
