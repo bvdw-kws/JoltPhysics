@@ -29,6 +29,11 @@
 			"Name": "JoltPhysicsRuntime",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "JoltPhysicsTestSuite",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "Default"
 		}
 	]
 }
