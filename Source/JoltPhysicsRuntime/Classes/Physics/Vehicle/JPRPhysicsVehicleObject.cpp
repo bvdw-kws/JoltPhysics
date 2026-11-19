@@ -183,7 +183,12 @@ void FJPRPhysicsVehicleBody::InitVehicle(const FJPRPhysicsVehicleShape& VehicleS
 	}
 	
 	Body* car_body = CreateAndSetBody(body_creation_settings, InBodyID);
-	
+	if (car_body == nullptr)
+	{
+		// Jolt refused the body, there is nothing to attach a vehicle constraint to.
+		return;
+	}
+
 	// Create constraint
 	vehicle_constrain = MakeShared<FJPRVehicleRef>();
 	vehicle_constrain->Ref = new VehicleConstraint(*car_body, vehicle);

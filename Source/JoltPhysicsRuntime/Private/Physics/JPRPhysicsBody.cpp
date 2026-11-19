@@ -519,6 +519,13 @@ JPH::Body* FJPRPhysicsBody::CreateAndSetBody(const JPH::BodyCreationSettings& Bo
 {
 	const JPH::BodyID NewBodyID(InBodyID);
 	JPH::Body* Body = GetBodyInterface().CreateBodyWithID(NewBodyID, BodySettings);
+	if (Body == nullptr)
+	{
+		// Jolt refuses the ID when its index is >= MaxBodies or when the slot is already used.
+		// Keeping the ID would make us destroy a body we never owned (out of range assert, or the live body of someone else).
+		UE_LOG(LogTemp, Error, TEXT("FJPRPhysicsBody: Jolt refused to create a body with ID 0x%08x (ID out of range or already in use)"), InBodyID);
+		return nullptr;
+	}
 	SetBodyID(NewBodyID);
 	return Body;
 }
